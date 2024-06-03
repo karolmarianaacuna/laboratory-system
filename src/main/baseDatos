@@ -1,0 +1,39 @@
+CREATE DATABASE inventario_Fisica;
+
+USE inventario_Fisica;
+
+CREATE TABLE Laboratoristas(
+    id_Laboratorista int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    correo VARCHAR(100),
+    contrasena VARCHAR(100),
+    documento_Identidad VARCHAR(100),
+    titulo_Profesional VARCHAR(100)
+);
+
+CREATE TABLE Administrativo(
+    id_Administrativo int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    correo VARCHAR(100),
+    contrasena VARCHAR(100),
+    documento_Identidad VARCHAR(100),
+    cargo VARCHAR(100)
+);
+
+CREATE TABLE Materiales(
+    id_Material int PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(100),
+    nombre VARCHAR(100),
+    descripcion VARCHAR(100)
+);
+
+CREATE TABLE Laboratorios(
+    id_Laboratorio int PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    tipo VARCHAR(100),
+    descripcion VARCHAR(100),
+    id_Laboratorista int,
+    id_Material int,
+    FOREIGN KEY (id_Laboratorista) REFERENCES Laboratoristas(id_Laboratorista),
+    FOREIGN KEY (id_Material) REFERENCES Materiales(id_Material)
+);
